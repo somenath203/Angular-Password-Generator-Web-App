@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
+
+      <div class="field">
+        <label>Enter the Length(INTEGER) of the Password.</label>
+        <input class="input" (input)="onChangeLength($event.target.value)" />
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseLetters()" type="checkbox" />
+            Use Letters in your Password
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseNumbers()" type="checkbox" />
+            Use Numbers in your Password
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseSymbols()" type="checkbox" />
+            Use Symbols in your Password
+          </label>
+        </div>
+      </div>
+
+      <button
+        [disabled]="
+          !(length && (includeLetters || includeSymbols || includeNumbers))
+        "
+        (click)="onButtonClick()"
+        class="button is-link is-fullwidth"
+      >
+        Generate!
+      </button>
+
+      <div class="box" *ngIf="password">
+        <label>Your Password</label>
+        <input class="input" [value]="password" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Password Generator</strong> created by
+        <a href="https://jgthms.com">Somenath Choudhury</a>.
+      </p>
+    </div>
+  </footer>
+</div>
